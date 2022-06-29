@@ -1,5 +1,5 @@
 
-# AWS
+## AWS
 
 To deploy build folder we use serverless framework which deploys all content to aws
 
