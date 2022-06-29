@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Use Node 14 as runtime.
+
 ## Available Scripts
 
 In the project directory, you can run:  
@@ -28,18 +30,12 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject` OR `npm run eject`
+# AWS
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To deploy build folder we use serverless framework which deploys all content to aws
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `npm run client:deploy:nc`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+[Cloudfront URL](https://d1a5hixbcdn5bv.cloudfront.net)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[S3 URL](https://rpayeras-shop-react-redux-cloudfront-bucket.s3.amazonaws.com)
