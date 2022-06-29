@@ -1,8 +1,17 @@
+
+# AWS
+
+To deploy build folder we use serverless framework which deploys all content to aws
+
+[Cloudfront URL](https://d1a5hixbcdn5bv.cloudfront.net)
+
+[S3 URL](https://rpayeras-shop-react-redux-cloudfront-bucket.s3.amazonaws.com)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Use Node 14 as runtime.
-
 ## Available Scripts
+
+### `npm run client:deploy:nc` deploy to aws
 
 In the project directory, you can run:  
 You can use NPM instead of YARN (Up to you)  
@@ -29,13 +38,3 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-# AWS
-
-To deploy build folder we use serverless framework which deploys all content to aws
-
-### `npm run client:deploy:nc`
-
-[Cloudfront URL](https://d1a5hixbcdn5bv.cloudfront.net)
-
-[S3 URL](https://rpayeras-shop-react-redux-cloudfront-bucket.s3.amazonaws.com)
