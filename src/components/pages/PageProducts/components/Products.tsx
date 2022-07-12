@@ -66,7 +66,7 @@ export default function Products() {
                 component="h2"
                 style={{ fontWeight: 700 }}
               >
-                {product.title}
+                {product.name}
               </Typography>
               <Typography>{formatAsPrice(product.price)}</Typography>
             </CardContent>

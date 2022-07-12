@@ -14,7 +14,6 @@
     "price": 10,
     "title": "ProductNew",
     "image": "https://source.unsplash.com/random?sig=1"
-
   },
   {
     "count": 7,
@@ -23,7 +22,6 @@
     "price": 23,
     "title": "ProductTop",
     "image": "https://source.unsplash.com/random?sig=2"
-
   },
   {
     "count": 12,
@@ -32,7 +30,6 @@
     "price": 15,
     "title": "ProductTitle",
     "image": "https://source.unsplash.com/random?sig=3"
-
   },
   {
     "count": 7,
@@ -41,7 +38,6 @@
     "price": 23,
     "title": "Product",
     "image": "https://source.unsplash.com/random?sig=4"
-
   },
   {
     "count": 8,
@@ -50,7 +46,6 @@
     "price": 15,
     "title": "ProductTest",
     "image": "https://source.unsplash.com/random?sig=5"
-
   },
   {
     "count": 2,
@@ -59,7 +54,6 @@
     "price": 23,
     "title": "Product2",
     "image": "https://source.unsplash.com/random?sig=6"
-
   },
   {
     "count": 3,
@@ -68,6 +62,5 @@
     "price": 15,
     "title": "ProductName",
     "image": "https://source.unsplash.com/random?sig=7"
-
   }
 ]
