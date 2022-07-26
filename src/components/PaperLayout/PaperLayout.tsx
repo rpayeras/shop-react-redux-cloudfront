@@ -1,16 +1,16 @@
-import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
-    width: 'auto',
+    width: "auto",
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
       width: 600,
-      marginLeft: 'auto',
-      marginRight: 'auto',
+      marginLeft: "auto",
+      marginRight: "auto",
     },
   },
   paper: {
@@ -25,14 +25,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PaperLayout:React.FC = ({children}) =>  {
+const PaperLayout: React.FC = ({ children }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.layout}>
-      <Paper className={classes.paper}>
-        {children}
-      </Paper>
+      <Paper className={classes.paper}>{children}</Paper>
     </div>
   );
 };
