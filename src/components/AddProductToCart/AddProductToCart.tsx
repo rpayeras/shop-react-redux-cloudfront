@@ -30,9 +30,17 @@ export default function AddProductToCart({ product }: AddProductToCartProps) {
           </IconButton>
         </>
       ) : (
-        <IconButton onClick={() => dispatch(addToCart(product))}>
-          <CartIcon color={"secondary"} />
-        </IconButton>
+        <>
+          <IconButton
+            onClick={() => dispatch(addToCart(product))}
+            disabled={product.count === 0}
+          >
+            <CartIcon color={product.count ? "secondary" : "disabled"} />
+          </IconButton>
+          <Typography align="center" color="error">
+            {!product.count ? "Out of stock" : ""}
+          </Typography>
+        </>
       )}
     </>
   );

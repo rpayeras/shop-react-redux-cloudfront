@@ -37,13 +37,12 @@ const useStyles = makeStyles((theme) => ({
 export default function Products() {
   const dispatch = useDispatch();
   const classes = useStyles();
+
   const { isLoading, list = [] } = useSelector(
     (state: RootState) => state.products
   );
 
   useEffect(() => {
-    // axios.get(`${API_PATHS.bff}/product/available/`)
-    //   .then(res => setProducts(res.data));
     dispatch(getProducts());
   }, []);
 
@@ -56,7 +55,7 @@ export default function Products() {
           <Card className={classes.card}>
             <CardMedia
               className={classes.cardMedia}
-              image={product.image}
+              image={`https://loremflickr.com/320/240/car?random=${index}`}
               title="Image title"
             />
             <CardContent className={classes.cardContent}>
@@ -66,8 +65,9 @@ export default function Products() {
                 component="h2"
                 style={{ fontWeight: 700 }}
               >
-                {product.name}
+                {product.title}
               </Typography>
+              <Typography>{product.description}</Typography>
               <Typography>{formatAsPrice(product.price)}</Typography>
             </CardContent>
             <CardActions>

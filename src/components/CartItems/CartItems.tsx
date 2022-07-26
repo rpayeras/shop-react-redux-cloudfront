@@ -40,7 +40,7 @@ export default function CartItems({ items, isEditable }: CartItemsProps) {
           <ListItem className={classes.listItem} key={cartItem.product.id}>
             {isEditable && <AddProductToCart product={cartItem.product} />}
             <ListItemText
-              primary={cartItem.product.name}
+              primary={cartItem.product.title}
               secondary={cartItem.product.description}
             />
             <Typography variant="body2">
