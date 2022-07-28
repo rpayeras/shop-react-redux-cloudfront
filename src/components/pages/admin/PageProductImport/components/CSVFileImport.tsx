@@ -48,7 +48,7 @@ export default function CSVFileImport({ url, title }: CSVFileImportProps) {
     });
 
     console.log("Result: ", result);
-
+    alert(result.url);
     setFile("");
   };
 
