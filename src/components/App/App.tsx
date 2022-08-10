@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "components/App/App.css";
 import PageProducts from "components/pages/PageProducts/PageProducts";
 import MainLayout from "components/MainLayout/MainLayout";
@@ -9,39 +9,43 @@ import PageOrders from "components/pages/PageOrders/PageOrders";
 import PageOrder from "components/pages/PageOrder/PageOrder";
 import PageProductImport from "components/pages/admin/PageProductImport/PageProductImport";
 
-import { login } from "../../services/authService";
+import { PrivateRoute } from "../../routers";
+import { useSelector } from "react-redux";
+import { selectUser } from "store/userSlice";
 
 function App() {
-  useEffect(() => {
-    login();
-  });
+  const { logged } = useSelector(selectUser);
 
   return (
     <Router>
       <Switch>
         <Route path="/">
           <MainLayout>
-            <Route exact path="/">
+            <PrivateRoute path="/" isAuthenticated={logged}>
               <PageProducts />
-            </Route>
-            <Route
-              exact
+            </PrivateRoute>
+
+            <PrivateRoute
               path={["/admin/product-form/:id", "/admin/product-form"]}
+              isAuthenticated={logged}
             >
               <PageProductForm />
-            </Route>
-            <Route exact path="/cart">
+            </PrivateRoute>
+            <PrivateRoute path="/cart" isAuthenticated={logged}>
               <PageCart />
-            </Route>
-            <Route exact path="/admin/orders">
+            </PrivateRoute>
+
+            <PrivateRoute path="/admin/orders" isAuthenticated={logged}>
               <PageOrders />
-            </Route>
-            <Route exact path="/admin/order/:id">
+            </PrivateRoute>
+
+            <PrivateRoute path="/admin/order/:id" isAuthenticated={logged}>
               <PageOrder />
-            </Route>
-            <Route exact path="/admin/products">
+            </PrivateRoute>
+
+            <PrivateRoute path="/admin/products" isAuthenticated={logged}>
               <PageProductImport />
-            </Route>
+            </PrivateRoute>
           </MainLayout>
         </Route>
       </Switch>

@@ -16,17 +16,34 @@ export default function ProductsTable() {
   const [products, setProducts] = useState<any>([]);
 
   useEffect(() => {
+    const token = localStorage.getItem("cognito_token");
+
     axios
-      .get(`${API_PATHS.product}/products`)
+      .get(`${API_PATHS.product}/products`, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
       .then((res) => setProducts(res.data.data));
   }, []);
 
   const onDelete = (id: string) => {
-    axios.delete(`${API_PATHS.product}/products/${id}`).then(() => {
-      axios
-        .get(`${API_PATHS.product}/products`)
-        .then((res) => setProducts(res.data.data));
-    });
+    const token = localStorage.getItem("cognito_token");
+    axios
+      .delete(`${API_PATHS.product}/products/${id}`, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+      .then(() => {
+        axios
+          .get(`${API_PATHS.product}/products`, {
+            headers: {
+              Authorization: `${token}`,
+            },
+          })
+          .then((res) => setProducts(res.data.data));
+      });
   };
 
   return (

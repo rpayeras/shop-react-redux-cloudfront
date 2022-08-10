@@ -12,13 +12,17 @@ export const getAllProducts = async (
   offset: number = 0
 ) => {
   try {
-    const res = await fetch(`${url}/products?limit=${limit}&offset=${offset}`);
+    const res = await fetch(`${url}/products?limit=${limit}&offset=${offset}`, {
+      headers: {
+        Authorization: `${localStorage.getItem("cognito_token")}`,
+      },
+    });
     const { data } = await res.json();
 
     return data;
   } catch (err) {
     console.log(err);
-    return errorResponse;
+    return [];
   }
 };
 
