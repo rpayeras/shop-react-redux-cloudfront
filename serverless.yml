@@ -1,34 +1,23 @@
 service: rpayeras-shop-react-redux-cloudfront
-
 frameworkVersion: "2"
-
 provider:
   name: aws
   runtime: nodejs16.x
-  # setup profile for AWS CLI.
-  # profile: node-aws
   profile: default
   memorySize: 512
-
 plugins:
   - serverless-finch
-  # 'serverless-single-page-app-plugin' is a custom plugin that located .serverless_plugins folder.
-  # Existing plugin (https://www.npmjs.com/package/serverless-single-page-app-plugin) doesn't have invalidate cache feature that often used during CI/CD events.
-  # How to build your own plugins: https://www.serverless.com/framework/docs/providers/aws/guide/plugins#service-local-plugin
   - serverless-single-page-app-plugin
-
+  - serverless-dotenv-plugin
+useDotenv: true
 custom:
   client:
     bucketName: rpayeras-shop-react-redux-cloudfront-bucket
     distributionFolder: build
   s3BucketName: ${self:custom.client.bucketName}
-
-  ## Serverless-single-page-app-plugin configuration:
   s3LocalPath: ${self:custom.client.distributionFolder}/
-
 resources:
   Resources:
-    ## Specifying the S3 Bucket
     WebAppS3Bucket:
       Type: AWS::S3::Bucket
       Properties:
@@ -37,9 +26,6 @@ resources:
         WebsiteConfiguration:
           IndexDocument: index.html
           ErrorDocument: index.html
-        # VersioningConfiguration:
-        #   Status: Enabled
-
     ## Specifying the policies to make sure all files inside the Bucket are avaialble to CloudFront
     WebAppS3BucketPolicy:
       Type: AWS::S3::BucketPolicy
@@ -58,13 +44,11 @@ resources:
                     - " "
                     - - "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity"
                       - !Ref OriginAccessIdentity
-
     OriginAccessIdentity:
       Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
       Properties:
         CloudFrontOriginAccessIdentityConfig:
           Comment: Access identity between CloudFront and S3 bucket
-
     ## Specifying the CloudFront Distribution to server your Web Application
     WebAppCloudFrontDistribution:
       Type: AWS::CloudFront::Distribution
@@ -121,7 +105,6 @@ resources:
           #   IncludeCookies: 'false'
           #   Bucket: mylogs.s3.amazonaws.com
           #   Prefix: myprefix
-
   ## In order to print out the hosted domain via `serverless info` we need to define the DomainName output for CloudFormation
   Outputs:
     WebAppS3BucketOutput:
