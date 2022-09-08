@@ -1,4 +1,3 @@
-
 ## AWS
 
 To deploy build folder we use serverless framework which deploys all content to aws
@@ -14,7 +13,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### `npm run client:deploy:nc` deploy to aws
 
 In the project directory, you can run:  
-You can use NPM instead of YARN (Up to you)  
+You can use NPM instead of YARN (Up to you)
 
 ### `yarn start` OR `npm run start`
 
@@ -38,3 +37,14 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### Deploying in ec2
+
+```bash
+sh ec2-web-server-set-up-2.sh keypath user host
+```
+
+## Start/Stop instances
+
+aws ec2 stop-instances --instance-ids i-056db2709b24e7631
+aws ec2 start-instances --instance-ids i-056db2709b24e7631
