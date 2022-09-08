@@ -1,10 +1,16 @@
 {
-  "name": "store",
-  "version": "0.1.0",
+  "name": "my-store-app",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "vite",
+    "build": "tsc && vite build",
+    "preview": "npm run build && vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint --ignore-path .gitignore --fix src",
+    "prettier": "prettier src --write",
     "client:deploy": "sls client deploy --no-config-change --no-policy-change --no-cors-change",
     "client:deploy:nc": "npm run client:deploy -- --no-confirm",
     "client:build:deploy": "npm run build && npm run client:deploy",
@@ -16,72 +22,51 @@
     "cloudfront:build:deploy:nc": "npm run client:build:deploy:nc && npm run cloudfront:invalidateCache",
     "cloudfront:update:build:deploy": "npm run cloudfront:setup && npm run cloudfront:build:deploy",
     "cloudfront:update:build:deploy:nc": "npm run cloudfront:setup && npm run cloudfront:build:deploy:nc",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "serverless:remove": "sls remove"
   },
   "dependencies": {
-    "@material-ui/core": "^4.12.4",
-    "@material-ui/icons": "^4.11.3",
-    "@reduxjs/toolkit": "^1.2.5",
-    "@types/lodash": "^4.14.158",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.43",
-    "@types/react-dom": "^16.9.8",
-    "@types/react-redux": "^7.1.7",
-    "@types/react-router-dom": "^5.1.5",
-    "@types/yup": "^0.29.3",
-    "axios": "^0.19.2",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "enzyme-to-json": "^3.4.4",
-    "formik": "^2.1.5",
-    "formik-material-ui": "^2.0.1",
-    "lodash": "^4.17.19",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "5.0.1",
-    "serverless": "^2.29.0",
-    "serverless-finch": "^2.6.0",
-    "typescript": "~4.3.5",
-    "yup": "^0.29.1"
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.3",
+    "@mui/material": "^5.10.4",
+    "@types/yup": "^0.32.0",
+    "axios": "^0.27.2",
+    "formik": "^2.2.9",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-query": "^3.39.2",
+    "react-router-dom": "^6.3.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.30.5",
-    "@typescript-eslint/parser": "^5.30.5",
-    "eslint": "^8.19.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/react": "^18.0.18",
+    "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "@vitejs/plugin-react": "^1.3.2",
+    "@vitest/ui": "^0.23.1",
+    "c8": "^7.12.0",
+    "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.2.4",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-react": "^7.30.1",
-    "prettier": "^2.7.1",
-    "serverless-dotenv-plugin": "^4.0.2"
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.7",
+    "jsdom": "^20.0.0",
+    "msw": "^0.47.0",
+    "prettier": "2.7.1",
+    "serverless": "^3.22.0",
+    "serverless-finch": "^4.0.0",
+    "serverless-s3-cleaner": "^2.0.1",
+    "typescript": "^4.8.2",
+    "vite": "^2.9.15",
+    "vitest": "^0.23.1"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "msw": {
+    "workerDirectory": "public"
   },
-  "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
